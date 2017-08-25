@@ -45,8 +45,10 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  uprintf ("KL: col=%02d, row=%02d, pressed=%d\n", record->event.key.col,
-              record->event.key.row, record->event.pressed);
+  uint8_t layer;
+  layer = biton32(layer_state);  // get the current layer
+  uprintf ("KL: col=%02d, row=%02d, layer=%02d pressed=%d\n", record->event.key.col,
+              record->event.key.row, record->event.pressed,layer);
   switch (keycode) {
     // dynamically generate these.
     case EPRM:
