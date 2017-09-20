@@ -48,7 +48,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   uint8_t layer;
   layer = biton32(layer_state);  // get the current layer
   uprintf ("KL: col=%02d, row=%02d, layer=%02d  keycode=%d pressed\n", record->event.key.col,
-              record->event.key.row,layer, keycode);
+              record->event.key.row,layer, keycode & 0xFF);
   switch (keycode) {
     // dynamically generate these.
     case EPRM:
