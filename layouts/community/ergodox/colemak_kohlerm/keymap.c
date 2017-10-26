@@ -12,7 +12,7 @@ enum custom_keycodes {
   EPRM,
   VRSN,
   RGB_SLD,
-  
+
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -47,8 +47,14 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   uint8_t layer;
   layer = biton32(layer_state);  // get the current layer
+    if (record->event.pressed) {
   uprintf ("KL: col=%02d, row=%02d, layer=%02d  keycode=%d pressed\n", record->event.key.col,
               record->event.key.row,layer, keycode & 0xFF);
+            }
+            else {
+          uprintf ("KL: col=%02d, row=%02d, layer=%02d  keycode=%d released\n", record->event.key.col,
+                      record->event.key.row,layer, keycode & 0xFF);
+                    }
   switch (keycode) {
     // dynamically generate these.
     case EPRM:
