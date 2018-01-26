@@ -26,20 +26,21 @@ enum custom_keycodes {
 #define KC_SPCCTL CTL_T(KC_SPACE)
 #define KC_TAB3 LT(3,KC_TAB)
 #define KC_SFT_GRAVE SFT_T(KC_GRAVE)
+#define KC_SFT_T SFT_T(KC_NO)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = KC_KEYMAP(
   //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-     ESC , 1  , 2  , 3  , 4  , 5  ,                6  , 7  , 8  , 9  , 0  ,BSPC,
+     ESC , 1  , 2  , 3  , 4  , 5  ,                6  , 7  , 8  , 9  , 0  ,MINUS,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     TAB3 , Q  , W  , F  , P  , G  ,                J , L  , U  , Y  , P  ,ENT ,
+     TAB3 , Q  , W  , F  , P  , G  ,                J , L  , U  , Y  , SCOLON  ,BSLASH ,
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-     RASE, A  , R  , S  , T  , D  ,                H  , N  , E  , I  ,O,SCOLON,
+     RASE, A  , R  , S  , T  , D  ,                H  , N  , E  , I  ,O,ENTER,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-     LSFT, Z  , X  , C  , V  , B  , APP ,     TAB3 , K  , M  ,COMM,DOT ,SLSH,SFT_GRAVE,
+     LSFT, Z  , X  , C  , V  , B  , APP ,     TAB3 , K  , M  ,COMM,DOT ,SLSH,QUOTE,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                       LCTL,LOWR,LSFT ,         SPCCTL ,LGUI,LALT
+                       LGUI,LOWR,SFT_T ,         SPCCTL ,LGUI,RALT
   //                  `----+----+----'        `----+----+----'
   ),
 
@@ -51,24 +52,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|              |----+----+----+----+----+----|
      DEL ,    ,LEFT,RGHT, UP ,LBRC,               RBRC, P4 , P5 , P6 ,PLUS,PIPE,
   //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-     BL_S,    ,    ,    ,DOWN,LCBR,LPRN,     RPRN,RCBR, P1 , P2 , P3 ,MINS,    ,
+     BL_S,    ,    ,    ,DOWN,LCBR,LPRN,     RPRN,RCBR, P1 , P2 , P3 ,MINS,SFT_GRAVE    ,
   //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    ,DEL ,         DEL ,    , P0
+                           ,    ,  ,         DEL ,    , P0
   //                  `----+----+----'        `----+----+----'
   ),
 
   [_RAISE] = KC_KEYMAP(
-  //,----+----+----+----+----+----.              ,----+----+----+----+----+----.
-     F12 , F1 , F2 , F3 , F4 , F5 ,                F6 , F7 , F8 , F9 ,F10 ,F11 ,
-  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         ,LALT, MS_WH_DOWN ,LSHIFT,LCTL ,PERC,   PGDOWN,LEFT,UP,RIGHT,RPRN,    ,
-  //|----+----+----+----+----+----|              |----+----+----+----+----+----|
-         ,LALT, MS_WH_DOWN ,LSHIFT,LCTL,UNDS,     PGDOWN ,LEFT,DOWN ,RIGHT    , BSPC, ,
-  //|----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-     MUTE,MSTP,MPLY,VOLD,PGDN,MINS,    ,         ,PLUS,END ,    ,    ,    ,    ,
-  //`----+----+----+--+-+----+----+----/    \----+----+----+----+----+----+----'
-                           ,    ,    ,             ,    ,
-  //                  `----+----+----'        `----+----+----'
+  //,----+----+----+----+----+----.                   ,----+----+----+----+----+----.
+     RST , F1 , F2 , F3 , F4 , F5 ,                    F6 , F7 , F8 , F9 ,F10 ,F11 ,
+  //|----+----+----+----+----+----|                   |----+----+----+----+----+----|
+         ,ESC, MS_WH_UP ,WWW_BACK,WWW_FORWARD ,MS_UP,    PGDOWN,LEFT,UP,END,DELETE,    ,
+  //|----+----+----+----+----+----|                   |----+----+----+----+----+----|
+         ,LALT, MS_WH_DOWN ,LSHIFT,LCTL,MS_DOWN,          PGDOWN ,LEFT,DOWN ,RIGHT    , BSPC, ,
+  //|----+----+----+----+----+----+----.              ,----|----+----+----+----+----+----|
+     MUTE,MSTP,MPLY,VOLD,PGDN,MINS,    ,                    ,PLUS,END ,    ,    , QUOTE , EQUAL   ,
+  //`----+----+----+--+-+----+----+----/               \----+----+----+----+----+----+----'
+                           ,    ,    ,                   ,    ,
+  //                  `----+----+----'                 `----+----+----'
   ),
 
   [_ADJUST] = KEYMAP(
